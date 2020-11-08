@@ -1,3 +1,36 @@
+package algoritmi20;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+class Vraboten {
+    private int ID;
+    private int plata;
+
+    public Vraboten(int ID, int plata) {
+        this.ID = ID;
+        this.plata = plata;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public int getPlata() {
+        return plata;
+    }
+
+    public void setPlata(int plata) {
+        this.plata = plata;
+    }
+}
+
+
 public class DLLKompanija {
     public static void main (String [] args) throws IOException {
         DLL<Vraboten> list = new DLL<Vraboten>();
@@ -16,11 +49,10 @@ public class DLLKompanija {
             node = node.succ;
         }
 
-        int i = 0;
         for (int j = 0; j < list.length(); j++){
             DLLNode<Vraboten> currentNode = list.getFirst();
             Vraboten auxNode;
-            for (i = 0; i < list.length(); i++){
+            for (int i = 0; i < list.length() - 1; i++){
                 if (currentNode.element.getID() < currentNode.succ.element.getID()){
                     auxNode = currentNode.element;
                     currentNode.element = currentNode.succ.element;
@@ -31,9 +63,10 @@ public class DLLKompanija {
         }
 
         node = list.getFirst();
-        if (node != null){
+        if (node == null){
             System.out.println("nema");
         }
+
         while (node != null){
             System.out.println(node.element.getID() + " " + node.element.getPlata());
             node = node.succ;
