@@ -17,38 +17,38 @@ public class examJune {
             list.insertLast(broj);
         }
 
-        DLLNode<Integer> first = list.getFirst();
-        DLLNode<Integer> last = list.getLast();
+        DLLNode<Integer> node1 = list.getFirst();
+        DLLNode<Integer> node2 = list.getLast();
         int bigger = 0;
-        int zbir = 0;
+        int sum = 0;
 
         for (int i = 0; i < list.length(); i++){
-            if (first.element > last.element){
-                bigger = first.element;
+            if (node1.element > node2.element){
+                bigger = node1.element;
             } else {
-                bigger = last.element;
+                bigger = node2.element;
             }
 
-            if ((first.succ == last) || (last.pred == first)){ //parna lista
-                zbir = first.element + last.element;
-                list.insertBefore(zbir, first);
-                list.delete(first);
-                list.insertBefore(bigger, last);
+            if ((node1.succ == node2) || (node2.pred == node1)) {
+                sum = node1.element + node2.element;
+                list.insertBefore(sum, node1);
+                list.delete(node1);
+                list.insertBefore(bigger, node2);
                 break;
             }
 
-            if (first == last){
+            if (node1 == node2){
                 break;
             }
 
-            zbir = first.element + last.element;
-            list.insertAfter(zbir, first);
-            list.delete(first);
-            first = first.succ;
-            list.insertAfter(bigger, first);
+            sum = node1.element + node2.element;
+            list.insertAfter(sum, node1);
+            list.delete(node1);
+            node1 = node1.succ;
+            list.insertAfter(bigger, node1);
 
-            first = first.succ.succ;
-            last = last.pred;
+            node1 = node1.succ.succ;
+            node2 = node2.pred;
         }
         System.out.println(list);
     }
