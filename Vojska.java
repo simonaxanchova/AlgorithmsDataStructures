@@ -6,25 +6,26 @@ import java.io.InputStreamReader;
 
 public class Vojska {
     public static void main (String [] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Integer n = Integer.parseInt(reader.readLine());
-        String s = reader.readLine();
-        String [] razdeli = s.split(" ");
+        BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+        String numSoldier = stdin.readLine();
+        Integer N = Integer.parseInt(numSoldier);
+        String elements = stdin.readLine();
+        String [] niza = elements.split(" ");
         DLL<Integer> list = new DLL<Integer>();
-        for(int i = 0; i < razdeli.length; i++) {
-            list.insertLast(Integer.parseInt(razdeli[i]));
+        for (int i = 0; i < niza.length; i++) {
+            list.insertLast(Integer.parseInt(niza[i]));
         }
-        
-        s = reader.readLine();
-        String[] intervali = s.split(" ");
-        int a = Integer.parseInt(intervali[0]);
-        int b = Integer.parseInt(intervali[1]);
-        
-        s = reader.readLine();
-        intervali = s.split(" ");
-        int c = Integer.parseInt(intervali[0]);
-        int d = Integer.parseInt(intervali[1]);
-        
+
+        numSoldier = stdin.readLine();
+        String [] intervals = numSoldier.split(" ");
+        int a = Integer.parseInt(intervals[0]);
+        int b = Integer.parseInt(intervals[1]);
+
+        numSoldier = stdin.readLine();
+        intervals = numSoldier.split(" ");
+        int c = Integer.parseInt(intervals[0]);
+        int d = Integer.parseInt(intervals[1]);
+
         DLL<Integer> predPrv = new DLL<Integer>();
         DLL<Integer> prv = new DLL<Integer>();
         DLL<Integer> izmegju = new DLL<Integer>();
@@ -61,9 +62,6 @@ public class Vojska {
             posleVtor.insertLast(node.element);
             node = node.succ;
         }
-
-
-        //////////////////////
 
         list.deleteList();
 
