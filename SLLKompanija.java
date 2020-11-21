@@ -3,6 +3,7 @@ package algoritmi20;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.Buffer;
 
 class Vraboten {
     private int ID;
@@ -32,9 +33,9 @@ class Vraboten {
 
 public class SLLKompanija {
     public static void main (String [] args) throws IOException {
-        SLL<Vraboten> list = new SLL<Vraboten>();
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(stdin.readLine());
+        SLL<Vraboten> list = new SLL<Vraboten>();
         for (int i = 0; i < n; i++) {
             list.insertLast(new Vraboten(Integer.parseInt(stdin.readLine()), Integer.parseInt(stdin.readLine())));
         }
@@ -51,12 +52,12 @@ public class SLLKompanija {
 
         for (int i = 0; i < list.length(); i++) {
             SLLNode<Vraboten> currentNode = list.getFirst();
-            Vraboten auxNode;
+            SLLNode<Vraboten> auxNode = null;
             for (int j = 0; j < list.length() - 1; j++) {
                 if (currentNode.element.getID() < currentNode.succ.element.getID()) {
-                    auxNode = currentNode.element;
+                    auxNode.element = currentNode.element;
                     currentNode.element = currentNode.succ.element;
-                    currentNode.succ.element = auxNode;
+                    currentNode.succ.element = auxNode.element;
                 }
                 currentNode = currentNode.succ;
             }
@@ -71,7 +72,5 @@ public class SLLKompanija {
             System.out.println(node.element.getID() + " " + node.element.getPlata());
             node = node.succ;
         }
-
     }
 }
-
