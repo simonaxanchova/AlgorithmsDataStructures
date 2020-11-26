@@ -8,15 +8,14 @@ public class Palin {
     public static int isItPalindrom (DLL<Integer> list) {
         DLLNode<Integer> first = list.getFirst();
         DLLNode<Integer> last = list.getLast();
-
-        for (int i = 0; i < list.length(); i++) {
-            if (first.element == last.element) {
-                return 1;
+        for (int i = 0; i < list.length() / 2; i++){
+            if (first.element != last.element){
+                return -1;
             }
             first = first.succ;
             last = last.pred;
         }
-        return -1;
+        return 1;
     }
 
     public static void main (String [] args) throws IOException {
@@ -33,5 +32,3 @@ public class Palin {
         System.out.println(isItPalindrom(list));
     }
 }
-
-
