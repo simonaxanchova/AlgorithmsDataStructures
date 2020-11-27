@@ -52,12 +52,12 @@ public class SLLKompanija {
 
         for (int i = 0; i < list.length(); i++) {
             SLLNode<Vraboten> currentNode = list.getFirst();
-            SLLNode<Vraboten> auxNode = null;
+            Vraboten auxNode;
             for (int j = 0; j < list.length() - 1; j++) {
                 if (currentNode.element.getID() < currentNode.succ.element.getID()) {
-                    auxNode.element = currentNode.element;
+                    auxNode = currentNode.element;
                     currentNode.element = currentNode.succ.element;
-                    currentNode.succ.element = auxNode.element;
+                    currentNode.succ.element = auxNode;
                 }
                 currentNode = currentNode.succ;
             }
