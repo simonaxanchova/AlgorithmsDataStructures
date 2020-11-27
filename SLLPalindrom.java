@@ -6,18 +6,19 @@ import java.io.InputStreamReader;
 
 public class SLLPalindrome {
     public static int isItPalindrome (SLL<Integer> list) {
-        SLL<Integer> mirrorList =  new SLL<Integer>();
+        SLL<Integer> mirrorList = new SLL<Integer>();
         SLLNode<Integer> node1 = list.getFirst();
         while (node1 != null) {
             mirrorList.insertLast(node1.element);
             node1 = node1.succ;
         }
+
         mirrorList.mirror();
         node1 = list.getFirst();
         SLLNode<Integer> node2 = mirrorList.getFirst();
 
         while (node1 != null && node2 != null) {
-            if (!node1.element.equals(node2.element)) return -1;
+            if (node1.element != node2.element) return -1;
             node1 = node1.succ;
             node2 = node2.succ;
         }
