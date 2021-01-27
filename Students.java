@@ -1,15 +1,16 @@
 // ТРЕТ ТЕРМИН (Прв колоквиум): Дадена е листа на студенти со индекс, име и поени. Да се најде студентот со најмалку поени и да се избрише. 
 // Да се испечатат имињата на останатите студенти. 
 
+package algoritmi20;
 import java.util.Scanner;
 
-class SLLNode {
+class SLLNode1 {
     String index;
     String name;
     int points;
-    SLLNode succ;
+    SLLNode1 succ;
 
-    public SLLNode(String index, String name, int points, SLLNode succ) {
+    public SLLNode1(String index, String name, int points, SLLNode1 succ) {
         this.index = index;
         this.name = name;
         this.points = points;
@@ -22,24 +23,24 @@ class SLLNode {
     }
 }
 
-class SLL {
-    SLLNode first;
+class SLL1 {
+    SLLNode1 first;
 
-    public SLL() {
+    public SLL1() {
         this.first = null;
     }
 
     public void insertFirst(String index, String name, int points) {
-        SLLNode ins = new SLLNode(index, name, points, first);
+        SLLNode1 ins = new SLLNode1(index, name, points, first);
         first = ins;
     }
 
     public void insertLast(String index, String name, int points) {
         if (first != null) {
-            SLLNode tmp = first;
+            SLLNode1 tmp = first;
             while (tmp.succ != null)
                 tmp = tmp.succ;
-            SLLNode ins = new SLLNode(index, name, points, null);
+            SLLNode1 ins = new SLLNode1(index, name, points, null);
             tmp.succ = ins;
         } else {
             insertFirst(index, name, points);
@@ -50,7 +51,7 @@ class SLL {
     public String toString() {
         StringBuilder ret = new StringBuilder();
         if (first != null) {
-            SLLNode tmp = first;
+            SLLNode1 tmp = first;
             ret.append(tmp).append("\n");
             while (tmp.succ != null) {
                 tmp = tmp.succ;
@@ -62,12 +63,12 @@ class SLL {
     }
 }
 
-public class Students {
+public class Students2 {
 
-    public static void removeStudent(SLL students) {
+    public static void removeStudent(SLL1 students) {
         //todo: implement function
-        SLLNode minIme= students.first;
-        SLLNode node= students.first;
+        SLLNode1 minIme= students.first;
+        SLLNode1 node= students.first;
         int min=students.first.points;
         while (node!= null){
             if (node.points<min){
@@ -95,7 +96,7 @@ public class Students {
     public static void main(String[] args) {
         Scanner scanner =  new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
-        SLL students =  new SLL();
+        SLL1 students =  new SLL1();
 
         for(int i=0; i<n; i++){
             String line = scanner.nextLine();
